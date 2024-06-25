@@ -1,4 +1,6 @@
 import copy
+import hashlib
+import pickle
 import pandas as pd
 
 
@@ -61,3 +63,23 @@ def internal_property(func):
         return self._ip_cache[key]
 
     return wrapper
+
+
+
+def sha256(*args):
+    '''
+    Description
+    --------------------
+    returns sha256 hash value for any arbitrary number of arguments
+
+    Parameters
+    --------------------
+    args : tuple
+        arguments to hashed
+
+    Returns
+    --------------------
+    out : str
+        sha256 hash value
+    '''
+    return hashlib.sha256(pickle.dumps(args)).hexdigest()
