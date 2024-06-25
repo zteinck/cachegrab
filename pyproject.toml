@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cachegrab"
-version = "0.1.0"
+version = "0.1.1"
 description = "Decorators for caching instance methods."
 authors = ["Zachary Einck <zacharyeinck@gmail.com>"]
 license = "MIT"
