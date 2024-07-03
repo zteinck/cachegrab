@@ -12,7 +12,7 @@ def deep_cached_property(func):
     @property
     def wrapper(self):
 
-        if not hasattr(self, '_deep_cache'):
+        if '_deep_cache' not in self.__dict__:
             self._deep_cache = {}
 
         key = func.__name__
@@ -38,7 +38,7 @@ def cached_attribute(func):
 
         attr = '_' + func.__name__
 
-        if not hasattr(self, attr):
+        if attr not in self.__dict__:
             setattr(self, attr, func(self))
 
         return getattr(self, attr)
@@ -52,7 +52,7 @@ def internal_property(func):
     @property
     def wrapper(self):
 
-        if not hasattr(self, '_ip_cache'):
+        if '_ip_cache' not in self.__dict__:
             self._ip_cache = {}
 
         key = func.__name__
