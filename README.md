@@ -18,8 +18,13 @@ pip install cachegrab
 
 
 ## Main Features
+
+### Property Caching
 - `deep_cached_property` ➔ Inspired by functools.cached_property, this decorator provides a deep copy of cached return values, ensuring they remain immutable after their initial access. The original return values are preserved in a dictionary named `self._deep_cache`.
-- `cached_attribute` ➔ this decorator returns an internal attribute with the same name as the original, prefixed with an underscore.
+
+### Attribute Caching
+- `cached_attribute` ➔ Decorator that returns an instance attribute with the same name as the decorated function, prefixed with an underscore.
+- `lazy_attribute` ➔ Identical to `cached_attribute`, except cached values are stored in a dictionary named `self._lazy_cache`.
 
 
 ## Example Usage
