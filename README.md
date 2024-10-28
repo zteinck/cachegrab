@@ -18,20 +18,15 @@ pip install cachegrab
 
 
 ## Main Features
-
-### Property Caching
-- `deep_cached_property` ➔ Inspired by functools.cached_property, this decorator provides a deep copy of cached return values, ensuring they remain immutable after their initial access. The original return values are preserved in a dictionary named `self._deep_cache`.
-
-### Attribute Caching
-- `cached_attribute` ➔ Decorator that returns an instance attribute with the same name as the decorated function, prefixed with an underscore.
-- `lazy_attribute` ➔ Identical to `cached_attribute`, except cached values are stored in a dictionary named `self._lazy_cache`.
+- `deep_cached_property` ➔ Inspired by functools' cached_property, this decorator provides a deep copy of cached return values, ensuring they remain immutable after their initial access. The original return values are preserved in a dictionary named `self._deep_cache`.
+- `protected_attribute` ➔ Decorator that returns the protected attribute corresponding to the name of the decorated function. If the protected attribute does not exist, it sets the attribute to the return value of the decorated function.
 
 
 ## Example Usage
 
 ### Imports
 ```python
-from cachegrab import deep_cached_property, cached_attribute
+from cachegrab import deep_cached_property, protected_attribute
 from functools import cached_property
 ```
 
@@ -39,7 +34,7 @@ from functools import cached_property
 Consider the example class `Dog` below:
 - `toys` ➔ decorated with `cached_property` because toys can be buried and are therefore mutable.
 - `is_good_boy` ➔ decorated with `deep_cached_property` because his good boy status is never in question.
-- `tricks` ➔ decorated with `cached_attribute` to prevent direct overwrites.
+- `tricks` ➔ decorated with `protected_attribute` to prevent direct overwrites.
 
 ```python
 class Dog(object):
@@ -52,7 +47,7 @@ class Dog(object):
     def is_good_boy(self):
         return True
 
-    @cached_attribute
+    @protected_attribute
     def tricks(self):
         return {'sit','shake'}
 
