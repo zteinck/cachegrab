@@ -62,8 +62,13 @@ def protected_attribute(func):
 
     @property
     def wrapper(self):
+        name = func.__name__
+        prefix = '_'
 
-        attr = '_' + func.__name__
+        if name.startswith(prefix):
+            raise ValueError(f"function name cannot start with an underscore: '{name}'")
+
+        attr = prefix + name
 
         if attr not in self.__dict__:
             setattr(self, attr, func(self))
