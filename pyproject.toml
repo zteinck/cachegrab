@@ -1,17 +1,22 @@
-[tool.poetry]
+[project]
 name = "cachegrab"
-version = "0.2.2"
+version = "0.2.3"
 description = "Decorators for caching instance methods."
-authors = ["Zachary Einck <zacharyeinck@gmail.com>"]
-license = "MIT"
+authors = [
+    { name = "Zachary Einck", email = "zacharyeinck@gmail.com" }
+]
+license = { text = "MIT" }
 readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=3.0.2",
+    "polars>=1.39.3",
+]
+
+[project.urls]
 repository = "https://github.com/zteinck/cachegrab"
 homepage = "https://github.com/zteinck/cachegrab"
 
-[tool.poetry.dependencies]
-python = "^3.8"
-pandas = "*"
-
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

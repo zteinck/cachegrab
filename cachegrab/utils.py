@@ -1,32 +1,44 @@
 import hashlib
 import pickle
-import copy
-import pandas as pd
+from copy import deepcopy
 
+import pandas as pd
+import polars as pl
 
 
 def deep_copy(obj):
     '''
     Description
-    --------------------
-    Returns deep copy of a given object. For pandas DataFrames or Series,
-    uses pandas' native copy method.
+    ------------
+    Returns deep copy of a given object. For pandas DataFrames or Series, uses
+    pandas' native copy method.
 
     Parameters
-    --------------------
+    ------------
     obj : object
-        object to be copied
+        Object to be copied.
 
     Returns
-    --------------------
+    ------------
     out : object
-        deep copy of object
+        Deep copy of object.
     '''
-    if isinstance(obj, (pd.DataFrame, pd.Series)):
-        return obj.copy(deep=True)
-    else:
-        return copy.deepcopy(obj)
 
+    if isinstance(obj, (
+        pd.DataFrame,
+        pd.Series,
+        )):
+        return obj.copy(deep=True)
+
+    elif isinstance(obj, (
+        pl.LazyFrame,
+        pl.DataFrame,
+        pl.Series,
+        )):
+        return obj.clone()
+
+    else:
+        return deepcopy(obj)
 
 
 def sha256(*args):
@@ -38,7 +50,7 @@ def sha256(*args):
     Parameters
     --------------------
     args : tuple
-        arguments to hashed
+        One or more arguments to hashed.
 
     Returns
     --------------------

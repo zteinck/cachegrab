@@ -1,7 +1,6 @@
 from .utils import deep_copy
 
 
-
 def deep_copy_property(func):
     ''' property that returns a deep copy '''
 
@@ -12,14 +11,14 @@ def deep_copy_property(func):
     return wrapper
 
 
-
 def deep_cached_property(func):
     '''
     Description
     --------------------
-    Inspired by functools.cached_property, this decorator has two key differences:
-        1.) returns a deep copy of the cached value, thereby ensuring the original
-            remains unchanged.
+    Inspired by functools.cached_property, this decorator has two key
+    differences:
+        1.) returns a deep copy of the cached value, thereby ensuring the
+            original remains unchanged.
         2.) cached values are stored in a dictionary named self._deep_cache
             to prevent namespace clutter.
 
@@ -45,14 +44,13 @@ def deep_cached_property(func):
     return wrapper
 
 
-
 def protected_attribute(func):
     '''
     Description
     --------------------
-    Decorator that returns the protected attribute corresponding to the name of
-    the decorated function. If the protected attribute does not exist, it sets
-    the attribute to the return value of the decorated function.
+    Decorator that returns the protected attribute corresponding to the name
+    of the decorated function. If the protected attribute does not exist, it
+    sets the attribute to the return value of the decorated function.
 
     Returns
     --------------------
@@ -66,7 +64,9 @@ def protected_attribute(func):
         prefix = '_'
 
         if name.startswith(prefix):
-            raise ValueError(f"function name cannot start with an underscore: '{name}'")
+            raise ValueError(
+                f'Function name cannot start with an underscore: {name!r}'
+                )
 
         attr = prefix + name
 
