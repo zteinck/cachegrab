@@ -1,6 +1,6 @@
 [project]
 name = "cachegrab"
-version = "0.2.3"
+version = "0.2.4"
 description = "Decorators for caching instance methods."
 authors = [
     { name = "Zachary Einck", email = "zacharyeinck@gmail.com" }
@@ -9,8 +9,8 @@ license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "pandas>=3.0.2",
-    "polars>=1.39.3",
+    "pandas>=3.0.6",
+    "polars>=2.0.0",
 ]
 
 [project.urls]
