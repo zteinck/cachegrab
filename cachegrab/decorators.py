@@ -24,7 +24,7 @@ def deep_cached_property(func):
 
     Returns
     --------------------
-    out : object
+    result : object
         deep copy of object
     '''
 
@@ -54,7 +54,7 @@ def protected_attribute(func):
 
     Returns
     --------------------
-    out : object
+    result : object
         protected attribute
     '''
 

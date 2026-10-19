@@ -20,7 +20,7 @@ def deep_copy(obj):
 
     Returns
     ------------
-    out : object
+    result : object
         Deep copy of object.
     '''
 
@@ -54,7 +54,9 @@ def sha256(*args):
 
     Returns
     --------------------
-    out : str
+    digest : str
         sha256 hash value
     '''
-    return hashlib.sha256(pickle.dumps(args)).hexdigest()
+    payload = pickle.dumps(args)
+    digest = hashlib.sha256(payload).hexdigest()
+    return digest
